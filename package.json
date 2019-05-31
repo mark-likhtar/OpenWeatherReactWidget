@@ -1,0 +1,39 @@
+{
+  "name": "reactweatherapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --output-public-path=/build/ --open"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-polyfill": "^6.26.0",
+    "moment": "^2.24.0",
+    "node-sass": "^4.12.0",
+    "openweather-apis": "^4.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4",
+    "react-icons-weather": "^1.0.5",
+    "react-scrollbar": "^0.5.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^2.1.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  }
+}
