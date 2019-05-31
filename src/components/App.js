@@ -3,7 +3,7 @@ import axios from "axios";
 
 import Header from "./Header";
 import Footer from "./Footer";
-import widgetPosition from "../Service/styleService"
+import widgetPosition from "../Service/styleService";
 import style from "../style.scss";
 
 export default class App extends Component {
@@ -38,7 +38,9 @@ export default class App extends Component {
         : await this.getPosition();
 
       const forecast = await axios.get(
-        `http://api.openweathermap.org/data/2.5/forecast?${location}&appid=${API_KEY}&units=${this.props.units}`
+        `http://api.openweathermap.org/data/2.5/forecast?${location}&appid=${API_KEY}&units=${
+          this.props.units
+        }`
       );
 
       this.setState({
@@ -55,7 +57,10 @@ export default class App extends Component {
   };
   render() {
     return (
-      <div className="weatherWidget" style={widgetPosition[this.props.position]}>
+      <div
+        className="weatherWidget"
+        style={widgetPosition[this.props.position]}
+      >
         {this.state.isLoading ? (
           <h3>Loading...</h3>
         ) : (
@@ -78,3 +83,8 @@ export default class App extends Component {
     );
   }
 }
+
+App.defaultProps = {
+  position: "top-left",
+  units: "metric"
+};

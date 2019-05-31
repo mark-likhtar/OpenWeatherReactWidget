@@ -68,6 +68,12 @@ body {
     font-size: .8em;
     padding: 6.5%;
     width: 50%;
+
+    span {
+        display: block;
+        text-align: center;
+    }
+
     i {
         display: flex;
         justify-content: center;
