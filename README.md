@@ -1,4 +1,4 @@
-weather-widget-react is a module for obtaining weather information.
+weather-widget-react is a module to display weather information.
 
 ---
 
@@ -27,11 +27,11 @@ import WeatherWidget from 'weather-widget-react';
 ---
 ## Props
 
-* apiKey: string - Open weather api key (Передается ключ для апи)
-* location: string | null - weather location (Название города для которого       выводить погоду, если null то брать текущую локацию браузера)
-* units: string - Metric/Imperial units (Единицы измерения градусы цельсия или фаренгейта)
-* lang: string - Russian / English language (Выбор языка отображения) (в дальнейшем с возможностью расширения)
-* position: string - top-left / top-right / bottom-left / bottom-right (Метоположение виджета на странице)
+* **apiKey**: string - Open weather api key (Передается ключ для апи)
+* **location**: string | null - weather location (Название города для которого       выводить погоду, если null то брать текущую локацию браузера)
+* **units**: string - Metric/Imperial units (Единицы измерения градусы цельсия или фаренгейта)
+* **lang**: string - Russian / English language (Выбор языка отображения) (в дальнейшем с возможностью расширения)
+* **position**: string - top-left / top-right / bottom-left / bottom-right (Метоположение виджета на странице)
 ---
 
 ## License
