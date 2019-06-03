@@ -4,9 +4,10 @@ import axios from "axios";
 import Header from "./Header";
 import Footer from "./Footer";
 import widgetPosition from "../Service/styleService";
+import icons from '../sass/weather-icons.min.scss'
 import style from "../style.scss";
 
-export default class App extends Component {
+export default class WeatherWidget extends Component {
   state = {
     weatherforecast: [],
     weather: [],
@@ -39,8 +40,7 @@ export default class App extends Component {
 
       const forecast = await axios.get(
         `http://api.openweathermap.org/data/2.5/forecast?${location}&appid=${API_KEY}&units=${
-          this.props.units
-        }`
+        this.props.units}&lang=${this.props.lang}`
       );
 
       this.setState({
@@ -64,19 +64,20 @@ export default class App extends Component {
         {this.state.isLoading ? (
           <h3>Loading...</h3>
         ) : (
-          <Header
-            city={this.state.city}
-            weather={this.state.weather.weather}
-            icon={this.state.icon}
-            wind={this.state.wind}
-            units={this.props.units}
-          />
-        )}
+            <Header
+              city={this.state.city}
+              weather={this.state.weather.weather}
+              icon={this.state.icon}
+              wind={this.state.wind}
+              units={this.props.units}
+            />
+          )}
         {!this.state.isLoading && (
           <Footer
             forecast={this.state.weatherforecast}
             weather={this.state.weather}
             units={this.props.units}
+            lang={this.props.lang}
           />
         )}
       </div>
@@ -84,7 +85,8 @@ export default class App extends Component {
   }
 }
 
-App.defaultProps = {
+WeatherWidget.defaultProps = {
   position: "top-left",
-  units: "metric"
+  units: "metric",
+  lang: "eng"
 };

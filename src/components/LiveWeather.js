@@ -13,14 +13,14 @@ const LiveWeather = props => {
           {props.units === 'imperial' && 'F'}
         </h2>
         <span className="dateSpan">
-          {moment().format(`dddd D`)}
-          <sup>th</sup>
+          {moment().locale(`${props.lang}`).format(`dddd D`)}
+          <sup>{moment().format(`Do`).slice(1)}</sup>
         </span>
       </div>
       <div className="liveIcon">
         <i className={`wi ${icons[props.weather.weather[0].icon]}`} />
         <span>
-          {Math.round(props.weather.wind.speed)}мс / {Math.round(props.weather.main.temp)}<sup>o</sup>
+          {Math.round(props.weather.wind.speed)}{props.units === 'metric' ? ('мc') :( 'mph')} / {Math.round(props.weather.main.temp)}<sup>o</sup>
         </span>
       </div>
     </div>

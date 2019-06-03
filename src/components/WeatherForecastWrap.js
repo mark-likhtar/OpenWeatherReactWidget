@@ -11,8 +11,6 @@ const WeatherForecastWrap = ({ forecast, units }) => (
     horizontal={true}
     contentClassName={"long"}
   >
-    {console.log(units)
-    }
     <WeatherForecast forecast={forecast} units={units} />
   </ScrollArea>
 );
