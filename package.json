@@ -2,7 +2,7 @@
   "name": "weather-widget-react",
   "version": "1.0.2",
   "description": "display weather on your site",
-  "main": "./src/components/WeatherWidget.js",
+  "main": "build/bundle.js",
   "scripts": {
     "build": "webpack",
     "start": "webpack-dev-server --output-public-path=/build/ --open"
