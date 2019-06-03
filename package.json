@@ -7,6 +7,10 @@
     "build": "webpack",
     "start": "webpack-dev-server --output-public-path=/build/ --open"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marik0201/OpenWeatherReactWidget"
+  },
   "author": "mark.likhtar",
   "license": "ISC",
   "dependencies": {
