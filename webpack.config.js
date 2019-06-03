@@ -5,7 +5,8 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    libraryTarget: 'commonjs2'
   },
   module: {
     rules: [
@@ -73,6 +74,9 @@ module.exports = {
   },
   resolve: {
     extensions: ["*", ".js", ".jsx"]
+  },
+  externals: {
+    'react': 'commonjs react' 
   },
   mode: "development"
 };
