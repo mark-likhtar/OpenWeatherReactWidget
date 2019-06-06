@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import { getForecast } from '../services/weather';
+import { getLocation } from "../services/location";
 import WidgetHeader from './WidgetHeader';
-import Footer from './WidgetBottom';
-import widgetPosition from '../enums/widget-position';
+import WidgetBottom from './WidgetBottom';
+import widgetPosition from '../enums/widget-positions';
 import style from '../styles/style.scss';
 
 export default class WeatherWidget extends Component {
@@ -19,30 +21,16 @@ export default class WeatherWidget extends Component {
     this.getWeather();
   };
 
-  getPosition = async () => {
-    return await new Promise(resolve => {
-      navigator.geolocation.getCurrentPosition(position => {
-        resolve(
-          `lat=${position.coords.latitude}&lon=${position.coords.longitude}`
-        );
-      });
-    });
-  };
-
   getWeather = async () => {
     try {
       const API_KEY = this.props.apiKey;
 
       const location = this.props.location
         ? `q=${this.props.location}`
-        : await this.getPosition();
+        : await getLocation();
 
-      const forecast = await axios.get(
-        `http://api.openweathermap.org/data/2.5/forecast?${location}&appid=${API_KEY}&units=${
-          this.props.units
-        }&lang=${this.props.lang}`
-      );
-
+      const forecast = await getForecast(location, API_KEY, this.props.units, this.props.lang);
+      
       this.setState({
         weather: forecast.data.list[0],
         weatherforecast: forecast.data.list.slice(1),
@@ -66,11 +54,11 @@ export default class WeatherWidget extends Component {
             weather={this.state.weather.weather}
             icon={this.state.icon}
             wind={this.state.wind}
-            units={this.props.units}
+            unit={this.props.units}
           />
         )}
         {!this.state.isLoading && (
-          <Footer
+          <WidgetBottom
             forecast={this.state.weatherforecast}
             weather={this.state.weather}
             units={this.props.units}
@@ -81,8 +69,6 @@ export default class WeatherWidget extends Component {
     );
   };
 }
-
-//PROP TYPES WHERE IS IT?????????
 
 WeatherWidget.defaultProps = {
   position: 'top-left',

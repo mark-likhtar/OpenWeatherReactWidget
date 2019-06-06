@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import icons from '../enums/icons';
+import units from '../enums/wind-units'
 import Svg from 'react-inlinesvg';
 
-const WidgetHeader = ({ city, wind, icon, units, weather }) => {
+const WidgetHeader = ({ city, wind, icon, unit, weather }) => {
   const [date, setDate] = useState(new Date());
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const WidgetHeader = ({ city, wind, icon, units, weather }) => {
       <Svg className="header__weather-icon" src={icons[icon]} />
       <div className="header-bottom-wrap">
         <span>
-          {Math.round(wind)} {units === 'metric' ? 'м/c' : 'мiles/h'}
+          {Math.round(wind)} {units[unit]}
         </span>
       </div>
     </div>
@@ -37,7 +38,7 @@ const WidgetHeader = ({ city, wind, icon, units, weather }) => {
 
 WidgetHeader.propTypes = {
   city: PropTypes.string,
-  units: PropTypes.string,
+  unit: PropTypes.string,
   wind: PropTypes.number,
   icon: PropTypes.string,
   weather: PropTypes.array

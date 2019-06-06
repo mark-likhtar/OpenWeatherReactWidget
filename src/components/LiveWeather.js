@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import Svg from 'react-inlinesvg';
 
+import tempUnits from '../enums/temp-units';
 import icons from '../enums/icons';
+import windUnits from '../enums/wind-units';
 
 const LiveWeather = props => {
   return (
@@ -12,9 +14,9 @@ const LiveWeather = props => {
         <h2>
           {Math.round(props.weather.main.temp)}
           <sup>o</sup>
-          {props.units === 'imperial' && 'F'}
+          {tempUnits[props.unit]}
         </h2>
-        <span className="dateSpan">
+        <span>
           {moment()
             .locale(`${props.lang}`)
             .format(`dddd D`)}
@@ -26,11 +28,13 @@ const LiveWeather = props => {
         </span>
       </div>
       <div className="live-weather">
-        <Svg className="live-weather__icon" src={icons[props.weather.weather[0].icon]} />
-        <span>
+        <Svg
+          className="live-weather__icon"
+          src={icons[props.weather.weather[0].icon]}
+        />
+        <span className="live-weather__span">
           {Math.round(props.weather.wind.speed)}
-          {props.units === 'metric' ? 'мc' : 'mph'} /{' '}
-          {Math.round(props.weather.main.temp)}
+          {windUnits[props.unit]} /{Math.round(props.weather.main.temp)}
           <sup>o</sup>
         </span>
       </div>
@@ -41,7 +45,7 @@ const LiveWeather = props => {
 LiveWeather.propTypes = {
   weather: PropTypes.object,
   lang: PropTypes.string,
-  units: PropTypes.string
-}
+  unit: PropTypes.string
+};
 
 export default LiveWeather;

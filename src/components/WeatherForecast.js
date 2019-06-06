@@ -5,7 +5,7 @@ import ForecastItem from "./ForecastItem";
 
 const WeatherForecast = ({ forecast, units }) => {
   return forecast.map(item => {
-    return <ForecastItem key={item.dt} item={item} units={units}/>;
+    return <ForecastItem key={item.dt} item={item} unit={units}/>;
   });
 };
 
