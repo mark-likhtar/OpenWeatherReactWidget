@@ -1,11 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Svg from 'react-inlinesvg';
 
+import tempUnits from '../enums/temp-units'
 import icons from '../enums/icons';
 
-const ForecastItem = ({ item, units }) => {
+const ForecastItem = ({ item, unit }) => {
   return (
     <div className="forecast-item">
       <span>{moment(`${item.dt_txt}`).format('D/MM')}</span>
@@ -14,7 +15,7 @@ const ForecastItem = ({ item, units }) => {
       <span>
         {Math.round(item.main.temp)}
         <sup>o</sup>
-        {units === 'imperial' && 'F'}
+        {tempUnits[unit]}
       </span>
     </div>
   );

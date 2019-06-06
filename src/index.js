@@ -7,7 +7,7 @@ render(
   <WeatherWidget
     apiKey="7cc0a3060e58f17a24e70b46ad9ed851"
     position="top-left"
-    location=""
+    location="Minsk"
     units="metric"
     lang="ru"
   />,
