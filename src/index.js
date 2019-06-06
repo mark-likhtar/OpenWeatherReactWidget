@@ -1,6 +1,7 @@
 import React from "react";
 import { render } from "react-dom";
 
+import "./styles/style.scss"
 import WeatherWidget from "./components/WeatherWidget";
 render(
   <WeatherWidget

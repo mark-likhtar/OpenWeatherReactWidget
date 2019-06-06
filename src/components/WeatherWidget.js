@@ -1,18 +1,17 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import Header from "./Header";
-import Footer from "./Footer";
-import widgetPosition from "../Service/styleService";
-import icons from '../sass/weather-icons.min.scss'
-import style from "../style.scss";
+import WidgetHeader from './WidgetHeader';
+import Footer from './WidgetBottom';
+import widgetPosition from '../enums/widget-position';
+import style from '../styles/style.scss';
 
 export default class WeatherWidget extends Component {
   state = {
     weatherforecast: [],
     weather: [],
-    city: "",
-    icon: "",
+    city: '',
+    icon: '',
     isLoading: true
   };
 
@@ -40,7 +39,8 @@ export default class WeatherWidget extends Component {
 
       const forecast = await axios.get(
         `http://api.openweathermap.org/data/2.5/forecast?${location}&appid=${API_KEY}&units=${
-        this.props.units}&lang=${this.props.lang}`
+          this.props.units
+        }&lang=${this.props.lang}`
       );
 
       this.setState({
@@ -55,23 +55,20 @@ export default class WeatherWidget extends Component {
       console.log(error);
     }
   };
-  render() {
+  render = () => {
     return (
-      <div
-        className="weatherWidget"
-        style={widgetPosition[this.props.position]}
-      >
+      <div className={`weather-widget ${widgetPosition[this.props.position]}`}>
         {this.state.isLoading ? (
           <h3>Loading...</h3>
         ) : (
-            <Header
-              city={this.state.city}
-              weather={this.state.weather.weather}
-              icon={this.state.icon}
-              wind={this.state.wind}
-              units={this.props.units}
-            />
-          )}
+          <WidgetHeader
+            city={this.state.city}
+            weather={this.state.weather.weather}
+            icon={this.state.icon}
+            wind={this.state.wind}
+            units={this.props.units}
+          />
+        )}
         {!this.state.isLoading && (
           <Footer
             forecast={this.state.weatherforecast}
@@ -82,11 +79,13 @@ export default class WeatherWidget extends Component {
         )}
       </div>
     );
-  }
+  };
 }
 
+//PROP TYPES WHERE IS IT?????????
+
 WeatherWidget.defaultProps = {
-  position: "top-left",
-  units: "metric",
-  lang: "eng"
+  position: 'top-left',
+  units: 'metric',
+  lang: 'eng'
 };
