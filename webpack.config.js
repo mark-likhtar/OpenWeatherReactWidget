@@ -5,8 +5,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
-    libraryTarget: 'commonjs2'
+    filename: "bundle.js"
   },
   module: {
     rules: [
@@ -43,9 +42,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        include: [
-          path.resolve(__dirname, './src/css'),
-        ],
+        include: [path.resolve(__dirname, "./src/css")],
         use: [
           {
             loader: "style-loader"
@@ -57,26 +54,38 @@ module.exports = {
             }
           }
         ]
-      }, {
+      },
+      {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
-      }, {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/'
+        use: [
+          {
+            loader: "babel-loader"
+          },
+          {
+            loader: "react-svg-loader",
+            options: {
+              jsx: true // true outputs JSX tags
+            }
           }
-        }]
-      }
+        ]
+      },
+      // {
+      //   test: /\.svg$/,
+      //   loader: 'svg-inline'
+      // },
+      // {
+      //   test: /\.(png|jpg|gif|svg)$/,
+      //   use: [
+      //     {
+      //       loader: "file-loader",
+      //       options: {}
+      //     }
+      //   ]
+      // }
     ]
   },
   resolve: {
     extensions: ["*", ".js", ".jsx"]
-  },
-  externals: {
-    'react': 'commonjs react' 
   },
   mode: "development"
 };
