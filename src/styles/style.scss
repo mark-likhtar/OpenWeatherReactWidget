@@ -1,0 +1,161 @@
+body {
+  font-family: Roboto;
+}
+
+.weather-widget {
+  position: absolute;
+  width: 500px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-widget__top-left {
+    top: 0;
+    left: 0;
+}
+
+.weather-widget__top-right {
+    top: 0;
+    right: 0;
+}
+
+.weather-widget__bottom-right {
+    bottom: 0;
+    right: 0;
+}
+
+
+.header-top-wrap {
+  display: flex;
+  justify-content: space-between;
+  padding: 2%;
+}
+
+.header-bottom-wrap {
+  padding: 2%;
+}
+
+.header__weather-icon {
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.city-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.header-wrap {
+  position: relative;
+  background-color: #00aef0;
+  color: #fff;
+  i {
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.footer-wrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.live-temp {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  text-align: center;
+  padding: 4%;
+  width: 50%;
+  h2 {
+    font-size: 2.3em;
+    margin: 10% 0;
+  }
+}
+
+.live-icon {
+  align-items: center;
+  font-size: 0.8em;
+  padding: 6.5%;
+  width: 50%;
+
+  span {
+    display: block;
+    text-align: center;
+  }
+
+  i {
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+    margin: 30% 0;
+  }
+}
+
+.live-weather-wrap {
+  display: flex;
+  padding-top: 10px;
+  width: 35%;
+  align-items: stretch;
+}
+
+.long {
+  width: 2750px;
+}
+
+.live-weather__icon {
+  .svg-inline--fa {
+    fill: #bebebe;
+    display: block;
+    margin: 20% auto;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.scrollarea {
+  width: 65%;
+
+  .scrollarea-content {
+    display: flex;
+    margin-top: 5% !important;
+    margin-bottom: 3% !important;
+  }
+}
+
+.forecast-item {
+  display: flex;
+  width: 70px;
+  font-size: 0.8em;
+  flex-direction: column;
+  align-items: center;
+  border-left: #dadada 1px solid;
+  i {
+    display: flex;
+    justify-content: center;
+    font-size: 2em;
+    margin: 20% 0;
+  }
+}
+
+.forecast-item__icon {
+  .svg-inline--fa {
+    fill: #bebebe;
+    display: block;
+    margin: 0 auto;
+    width: 40px;
+    height: 50px;
+  }
+}
+
+.svg-inline--fa {
+  fill: #fff;
+  display: block;
+  margin: 0 auto;
+  height: 100px;
+}
