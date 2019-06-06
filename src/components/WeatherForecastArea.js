@@ -3,7 +3,7 @@ import React from "react";
 
 import WeatherForecast from "./WeatherForecast";
 
-const WeatherForecastWrap = ({ forecast, units }) => (
+const WeatherForecastArea = ({ forecast, units }) => (
   <ScrollArea
     speed={2.8}
     className="area"
@@ -15,4 +15,4 @@ const WeatherForecastWrap = ({ forecast, units }) => (
   </ScrollArea>
 );
 
-export default WeatherForecastWrap;
+export default WeatherForecastArea;
