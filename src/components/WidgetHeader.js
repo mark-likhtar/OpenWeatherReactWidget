@@ -1,40 +1,50 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import icons from '../enums/icons';
-import units from '../enums/wind-units'
+import units from '../enums/wind-units';
 import Svg from 'react-inlinesvg';
 
-const WidgetHeader = ({ city, wind, icon, unit, weather }) => {
-  const [date, setDate] = useState(new Date());
+export default class WidgetHeader extends Component {
+  state = {
+    date: Date.now()
+  };
 
-  useEffect(() => {
-    let timerID = setInterval(() => setDate(new Date()), 60 * 1000);
+  tick() {
+    this.setState({
+      date: Date.now()
+    });
+  }
 
-    return function cleanup() {
-      clearInterval(timerID);
-    };
-  }, [date]);
+  componentDidMount() {
+    this.interval = setInterval(() => this.tick(), 20000);
+  }
 
-  return (
-    <div className="header-wrap">
-      <div className="header-top-wrap">
-        <span>{weather[0].description}</span>
-        <div className="city-info">
-          <span>{city}</span>
-          <span>{moment(date).format('H:mm')}</span>
+  componentWillUnmount() {
+    clearInterval(this.interval);
+  }
+
+  render() {
+    return (
+      <div className="header-wrap">
+        <div className="header-top-wrap">
+          <span>{this.props.weather[0].description}</span>
+          <div className="city-info">
+            <span>{this.props.city}</span>
+            <span>{moment(this.state.date).format('H:mm')}</span>
+          </div>
+        </div>
+        <Svg className="header__weather-icon" src={icons[this.props.icon]} />
+        <div className="header-bottom-wrap">
+          <span>
+            {Math.round(this.props.wind)} {units[this.props.unit]}
+          </span>
         </div>
       </div>
-      <Svg className="header__weather-icon" src={icons[icon]} />
-      <div className="header-bottom-wrap">
-        <span>
-          {Math.round(wind)} {units[unit]}
-        </span>
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 WidgetHeader.propTypes = {
   city: PropTypes.string,
@@ -43,5 +53,3 @@ WidgetHeader.propTypes = {
   icon: PropTypes.string,
   weather: PropTypes.array
 };
-
-export default WidgetHeader;
